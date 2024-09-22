@@ -11,14 +11,17 @@ function App() {
 			title: 'to do',
 			tasks: [
 				{
+					id: 1,
 					title: 'Задача №1',
 					date: '01/01/2001',
 				},
 				{
+					id: 2,
 					title: 'Задача №2',
 					date: '02/02/2002',
 				},
 				{
+					id: 3,
 					title: 'Задача №3',
 					date: '03/03/2003',
 				},
@@ -29,14 +32,17 @@ function App() {
 			title: 'DOING',
 			tasks: [
 				{
+					id: 4,
 					title: 'Задача №1',
 					date: '01/01/2001',
 				},
 				{
+					id: 5,
 					title: 'Задача №2',
 					date: '02/02/2002',
 				},
 				{
+					id: 6,
 					title: 'Задача №3',
 					date: '03/03/2003',
 				},
@@ -47,14 +53,17 @@ function App() {
 			title: 'DONE',
 			tasks: [
 				{
+					id: 7,
 					title: 'Задача №1',
 					date: '01/01/2001',
 				},
 				{
+					id: 8,
 					title: 'Задача №2',
 					date: '02/02/2002',
 				},
 				{
+					id: 9,
 					title: 'Задача №3',
 					date: '03/03/2003',
 				},
@@ -120,6 +129,7 @@ function App() {
 		<div className='wrapper-body'>
 			{boards.map(board => (
 				<TasksList
+					key={board.id}
 					board={board}
 					dragDrop={{
 						dragOverHandler,

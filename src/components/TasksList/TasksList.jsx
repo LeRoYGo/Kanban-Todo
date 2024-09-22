@@ -15,7 +15,7 @@ function TasksList(props) {
 				onDrop={() => dropCardHandler(props.board)}
 			>
 				{tasks.map(task => (
-					<li key={crypto.randomUUID()}>
+					<li key={task.id}>
 						<TodoItem
 							board={props.board}
 							task={task}
