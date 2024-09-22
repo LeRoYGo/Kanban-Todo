@@ -96,10 +96,25 @@ function App() {
 				} else if (b.id === currentBoard.id) {
 					return currentBoard;
 				}
+				return b;
 			})
 		);
 	}
-	function dropCardHandler() {}
+	function dropCardHandler(board) {
+		board.tasks.push(currentTodoItem);
+		const currentIndex = currentBoard.tasks.indexOf(currentTodoItem);
+		currentBoard.tasks.splice(currentIndex, 1);
+		setBoards(
+			boards.map(b => {
+				if (b.id === board.id) {
+					return board;
+				} else if (b.id === currentBoard.id) {
+					return currentBoard;
+				}
+				return b;
+			})
+		);
+	}
 
 	return (
 		<div className='wrapper-body'>

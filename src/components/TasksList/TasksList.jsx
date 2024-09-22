@@ -3,8 +3,6 @@ import TodoItem from '../TodoItem/TodoItem';
 import style from './TasksList.module.css';
 
 function TasksList(props) {
-	console.log(props);
-
 	const { title, tasks } = props.board;
 	const { dragOverHandler, dropCardHandler } = props.dragDrop;
 
@@ -14,7 +12,7 @@ function TasksList(props) {
 			<ul
 				className={style['task-list__column']}
 				onDragOver={e => dragOverHandler(e)}
-				onDrop={e => dropCardHandler(e, props.task)}
+				onDrop={() => dropCardHandler(props.board)}
 			>
 				{tasks.map(task => (
 					<li key={crypto.randomUUID()}>
