@@ -11,17 +11,17 @@ function App() {
 			title: 'to do',
 			tasks: [
 				{
-					id: 1,
+					id: `1-1`,
 					title: 'Задача №1',
 					date: '01/01/2001',
 				},
 				{
-					id: 2,
+					id: `1-2`,
 					title: 'Задача №2',
 					date: '02/02/2002',
 				},
 				{
-					id: 3,
+					id: `1-3`,
 					title: 'Задача №3',
 					date: '03/03/2003',
 				},
@@ -32,17 +32,17 @@ function App() {
 			title: 'DOING',
 			tasks: [
 				{
-					id: 4,
+					id: `2-1`,
 					title: 'Задача №1',
 					date: '01/01/2001',
 				},
 				{
-					id: 5,
+					id: `2-2`,
 					title: 'Задача №2',
 					date: '02/02/2002',
 				},
 				{
-					id: 6,
+					id: `2-3`,
 					title: 'Задача №3',
 					date: '03/03/2003',
 				},
@@ -53,17 +53,17 @@ function App() {
 			title: 'DONE',
 			tasks: [
 				{
-					id: 7,
+					id: `3-1`,
 					title: 'Задача №1',
 					date: '01/01/2001',
 				},
 				{
-					id: 8,
+					id: `3-2`,
 					title: 'Задача №2',
 					date: '02/02/2002',
 				},
 				{
-					id: 9,
+					id: `3-3`,
 					title: 'Задача №3',
 					date: '03/03/2003',
 				},
