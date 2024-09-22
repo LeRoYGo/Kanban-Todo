@@ -9,21 +9,25 @@ function TasksList(props) {
 	return (
 		<div className={style['task-list']}>
 			<h2 className={style['task-list__title']}>{title}</h2>
-			<ul
-				className={style['task-list__column']}
-				onDragOver={e => dragOverHandler(e)}
-				onDrop={() => dropCardHandler(props.board)}
-			>
-				{tasks.map(task => (
-					<li key={task.id}>
-						<TodoItem
-							board={props.board}
-							task={task}
-							dragDrop={props.dragDrop}
-						/>
-					</li>
-				))}
-			</ul>
+			{tasks.length == 0 ? (
+				<span className={style['task-list-empty']}>Нет задач</span>
+			) : (
+				<ul
+					className={style['task-list__column']}
+					onDragOver={e => dragOverHandler(e)}
+					onDrop={() => dropCardHandler(props.board)}
+				>
+					{tasks.map(task => (
+						<li key={task.id}>
+							<TodoItem
+								board={props.board}
+								task={task}
+								dragDrop={props.dragDrop}
+							/>
+						</li>
+					))}
+				</ul>
+			)}
 		</div>
 	);
 }
