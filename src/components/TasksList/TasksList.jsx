@@ -10,7 +10,13 @@ function TasksList(props) {
 		<div className={style['task-list']}>
 			<h2 className={style['task-list__title']}>{title}</h2>
 			{tasks.length == 0 ? (
-				<span className={style['task-list-empty']}>Нет задач</span>
+				<ul
+					className={`${style['task-list__column']} ${style['task-list-empty']}`}
+					onDragOver={e => dragOverHandler(e)}
+					onDrop={() => dropCardHandler(props.board)}
+				>
+					<li>Нет задач</li>
+				</ul>
 			) : (
 				<ul
 					className={style['task-list__column']}
