@@ -1,0 +1,31 @@
+html,
+body {
+	height: 100%;
+
+	font-family: 'Karla', sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 500;
+	font-style: normal;
+	background: rgb(242, 244, 247);
+}
+
+#root {
+	max-width: 1300px;
+	height: 100vh;
+	margin: 0 auto;
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.wrapper-body {
+	flex: 1 1 auto;
+
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 1fr;
+	grid-column-gap: 36px;
+
+	padding: 20px;
+}

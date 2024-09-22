@@ -1,0 +1,21 @@
+.task-list {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+.task-list__title {
+	color: rgb(102, 112, 133);
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 18px;
+	letter-spacing: -0.75%;
+	text-transform: uppercase;
+}
+
+.task-list__column {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	min-height: 100%;
+}
