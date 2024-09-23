@@ -1,0 +1,28 @@
+.form {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+
+.title {
+	font-size: 30px;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.input-text,
+.input-date {
+	display: block;
+	border: 2px dashed rgba(102, 112, 133, 0.4);
+	border-radius: 10px;
+	padding: 10px;
+}
+.input-text {
+	min-width: 35vw;
+	max-width: 70vw;
+	min-height: 30vh;
+	max-height: 70vh;
+}

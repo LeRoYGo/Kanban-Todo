@@ -3,6 +3,8 @@ import style from './TodoItem.module.css';
 
 function TodoItem(props) {
 	const { title, date } = props.task;
+	const task = props.task;
+	const board = props.board;
 	const {
 		dragOverHandler,
 		dragLeaveHandler,
@@ -14,11 +16,11 @@ function TodoItem(props) {
 	return (
 		<div
 			className={style['item']}
-			onDragOver={e => dragOverHandler(e)}
-			onDragLeave={e => dragLeaveHandler(e)}
-			onDragEnd={e => dragEndHandler(e)}
-			onDragStart={() => dragStartHandler(props.task, props.board)}
-			onDrop={e => dropHandler(e, props.task, props.board)}
+			onDragOver={e => dragOverHandler(e, style, style['item'])}
+			onDragLeave={e => dragLeaveHandler(e, style)}
+			onDragEnd={e => dragEndHandler(e, style)}
+			onDragStart={() => dragStartHandler(task, board)}
+			onDrop={e => dropHandler(e, task, board)}
 			draggable={true}
 		>
 			<h3 className={style['item__title']}>{title}</h3>
