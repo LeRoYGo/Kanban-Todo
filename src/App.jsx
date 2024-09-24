@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import { useState } from 'react';
 import './App.css';
 import TasksList from './components/TasksList/TasksList.jsx';
