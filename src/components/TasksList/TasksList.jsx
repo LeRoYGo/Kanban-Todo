@@ -45,7 +45,7 @@ function TasksList(props) {
 				</ul>
 			)}
 			{openModal && (
-				<Modal>
+				<Modal сloseModal={onClickHandler}>
 					<FormAddTask
 						onClickHandler={onClickHandler}
 						setBoards={props.setBoards}

@@ -16,4 +16,13 @@
 	min-width: 100px;
 	background-color: #fff;
 	border-radius: 10px;
+
+	position: relative;
+}
+
+.сloseModal{
+	position: absolute;
+	display: block;
+	top: 20px;
+	right: 20px;
 }
