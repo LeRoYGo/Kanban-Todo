@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useLocalStorage } from "@uidotdev/usehooks";
 import './App.css';
 import TasksList from './components/TasksList/TasksList.jsx';
 
 function App() {
-	const [boards, setBoards] = useState([
+
+	const [boards, setBoards] = useLocalStorage("boards", [
 		{
 			id: 1,
 			title: 'to do',

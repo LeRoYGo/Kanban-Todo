@@ -13,10 +13,11 @@ function FormAddTask(props) {
 		const { text, date } = formProps;
 		if (!text) return;
 		if (!date) return;
+		
 		const newTask = {
 			id: crypto.randomUUID(),
 			title: text,
-			date: date,
+			date: date.split('-').reverse().join('/'),
 		};
 		boards[boardId - 1].tasks.push(newTask);
 		setBoards([...boards]);
