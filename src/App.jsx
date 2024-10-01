@@ -2,26 +2,11 @@ import { useState } from 'react';
 import { useLocalStorage } from "@uidotdev/usehooks";
 import './App.css';
 import TasksList from './components/TasksList/TasksList.jsx';
+import INIT_BOARDS from './state.js'
 
 function App() {
 
-	const [boards, setBoards] = useLocalStorage("boards", [
-		{
-			id: 1,
-			title: 'to do',
-			tasks: [],
-		},
-		{
-			id: 2,
-			title: 'Doing',
-			tasks: [],
-		},
-		{
-			id: 3,
-			title: 'Done',
-			tasks: [],
-		},
-	]);
+	const [boards, setBoards] = useLocalStorage("boards", INIT_BOARDS);
 	const [currentBoard, setCurrentBoard] = useState(null);
 	const [currentTodoItem, setCurrentTodoItem] = useState(null);
 
