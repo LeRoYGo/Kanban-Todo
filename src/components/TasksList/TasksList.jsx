@@ -1,60 +1,136 @@
-/* eslint-disable react/prop-types */
-import { useState } from 'react';
-import AddTask from '../AddTask/AddTask';
-import FormAddTask from '../FormAddTask/FormAddTask.jsx';
-import Modal from '../Modal/Modal.jsx';
-import TodoItem from '../TodoItem/TodoItem';
-import style from './TasksList.module.css';
+import { useState } from "react";
+import AddTask from "../AddTask/AddTask.jsx";
+import FormTask from "../FormTask/FormTask.jsx";
+import Modal from "../Modal/Modal.jsx";
+import TaskCard from "../TaskCard/TaskCard.jsx";
+import style from "./TasksList.module.css";
 
 function TasksList(props) {
-	const [openModal, setOpenModal] = useState(false);
-	const { id, title, tasks } = props.board;
-	const { dragOverHandler, dropCardHandler } = props.dragDrop;
+  const [openModal, setOpenModal] = useState(false);
+  const [currentCardTask, setCurrentCardTask] = useState(null);
+  const [currentTaskList, setCurrentTaskList] = useState(null);
 
-	function onClickHandler() {
-		setOpenModal(!openModal);
-	}
+  const [boards, setBoards] = props.boards;
+  const { id, title, tasks } = props.board;
+  const isEmpty = !tasks.length;
 
-	return (
-		<div className={style['task-list']}>
-			<h2 className={style['task-list__title']}>{title}</h2>
-			<AddTask openModal={onClickHandler} />
-			{tasks.length == 0 ? (
-				<ul
-					className={`${style['task-list__column']} ${style['task-list-empty']}`}
-					onDragOver={e => dragOverHandler(e)}
+  function actionModal() {
+    setOpenModal(!openModal);
+  }
+  function onDragEnter(style) {
+    event.preventDefault();
+    const target = event.target;
+    target.classList.add(style);
+    setTimeout(() => target.classList.remove(style), 5000);
+  }
+  function onDragLeave(style) {
+    const target = event.target;
+    setTimeout(() => target.classList.remove(style), 300);
+  }
+  function onDragOver(event) {
+    event.preventDefault();
+  }
+  function onDragStart(task, taskList) {
+    setCurrentCardTask(task);
+    setCurrentTaskList(taskList);
+  }
+  function onDragEnd(task, taskList) {
+    if (task == currentCardTask && taskList == currentTaskList) {
+      return;
+    }
+    setCurrentCardTask(task);
+    setCurrentTaskList(taskList);
+  }
+  function onDrop(task, taskList) {
+    event.preventDefault();
+
+    const currentIndex = currentTaskList.tasks.indexOf(currentCardTask);
+    currentTaskList.tasks.splice(currentIndex, 1);
+
+    const dropIndex = taskList.tasks.indexOf(task);
+    taskList.tasks.splice(dropIndex + 1, 0, currentCardTask);
+
+    setBoards(
+      boards.map((b) => {
+        if (b.id === taskList.id) {
+          return taskList;
+        } else if (b.id === currentTaskList.id) {
+          return currentTaskList;
+        }
+        return b;
+      })
+    );
+  }
+  function dropCardHandler(taskList) {
+    
+    taskList.tasks.push(currentCardTask)
+    console.log(currentCardTask);
+    
+    const currentIndex = currentTaskList.tasks.indexOf(currentCardTask);
+    console.log(currentIndex);
+    currentTaskList.tasks.splice(currentIndex, 1);
+
+    setBoards(
+      boards.map((b) => {
+        if (b.id === taskList.id) {
+          return taskList;
+        } else if (b.id === currentTaskList.id) {
+          return currentTaskList;
+        }
+        return b;
+      })
+    );
+  }
+
+  return (
+    <>
+      <div
+        className={style["task-list"]}
+        onDragOver={e => onDragOver(e)}
 					onDrop={() => dropCardHandler(props.board)}
-				>
-					<li>Нет задач</li>
-				</ul>
-			) : (
-				<ul
-					className={style['task-list__column']}
-					onDragOver={e => dragOverHandler(e)}
-					onDrop={() => dropCardHandler(props.board)}
-				>
-					{tasks.map(task => (
-						<li key={task.id}>
-							<TodoItem
-								board={props.board}
-								task={task}
-								dragDrop={props.dragDrop}
-							/>
-						</li>
-					))}
-				</ul>
-			)}
-			{openModal && (
-				<Modal сloseModal={onClickHandler}>
-					<FormAddTask
-						onClickHandler={onClickHandler}
-						setBoards={props.setBoards}
-						boardId={id}
-					/>
-				</Modal>
-			)}
-		</div>
-	);
+      >
+        <h2 className={style["title"]}>{title}</h2>
+
+        <AddTask actionModal={actionModal} />
+
+        <ul
+          className={`${style["list-column"]} 
+          ${isEmpty ? style["empty"] : ""}`}
+        >
+          {isEmpty ? (
+            <li>Нет задач</li>
+          ) : (
+            tasks.map((task) => (
+              <li key={task.id}>
+                <TaskCard
+                  task={task}
+                  board={props.board}
+                  dragDrop={[
+                    onDrop,
+                    onDragEnter,
+                    onDragLeave,
+                    onDragOver,
+                    onDragStart,
+                    onDragEnd,
+                  ]}
+                />
+              </li>
+            ))
+          )}
+        </ul>
+      </div>
+
+      {openModal && (
+        <Modal actionModal={actionModal}>
+          <FormTask
+            boards={props.boards}
+            boardID={id}
+            actionModal={actionModal}
+          />
+        </Modal>
+      )}
+    </>
+  );
 }
 
 export default TasksList;

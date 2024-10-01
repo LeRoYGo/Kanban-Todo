@@ -12,11 +12,11 @@
 	row-gap: 12px;
 }
 
-.item__title {
+.title {
 	font-size: 20px;
 }
 
-.item__date {
+.date {
 	color: rgb(152, 162, 179);
 	font-size: 14px;
 	font-weight: 700;
@@ -24,6 +24,6 @@
 	letter-spacing: -2%;
 }
 
-.hover-drag-drop {
-	background: rgb(197, 255, 205);
+.hover-drag{
+	background: rgb(255, 151, 151);
 }

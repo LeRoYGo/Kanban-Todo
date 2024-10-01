@@ -1,9 +1,9 @@
 import style from './AddTask.module.css';
 
 function AddTask(props) {
-	const { openModal } = props;
+	const { actionModal } = props;
 	return (
-		<button className={style['button']} onClick={openModal}>
+		<button className={style['button']} onClick={actionModal}>
 			Add Task
 		</button>
 	);

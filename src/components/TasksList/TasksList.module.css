@@ -4,7 +4,7 @@
 	gap: 15px;
 }
 
-.task-list__title {
+.title {
 	color: rgb(70, 77, 91);
 	font-size: 20px;
 	font-weight: 800;
@@ -12,7 +12,7 @@
 	text-transform: uppercase;
 }
 
-.task-list__column {
+.list-column {
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
@@ -21,7 +21,7 @@
 	border-radius: 10px;
 }
 
-.task-list-empty {
+.empty {
 	justify-content: center;
 	align-items: center;
 	font-size: 30px;

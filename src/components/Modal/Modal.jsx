@@ -1,15 +1,16 @@
-import style from './Modal.module.css';
+import style from "./Modal.module.css";
 
-// eslint-disable-next-line react/prop-types
-function Modal({ сloseModal, children }) {
-	return (
-		<div className={style['modal']}>
-			<div className={style['form']}>
-				<button className={style['сloseModal']} onClick={сloseModal} >&#10060;</button>
-				{children}
-				</div>
-		</div>
-	);
+function Modal({ actionModal, children }) {
+  return (
+    <div className={style["modal"]}>
+      <div className={style["form"]}>
+        <button className={style["сlose"]} onClick={actionModal}>
+          &#10060;
+        </button>
+        {children}
+      </div>
+    </div>
+  );
 }
 
 export default Modal;
