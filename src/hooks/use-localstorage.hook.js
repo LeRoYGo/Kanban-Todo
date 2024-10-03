@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 
-export function useLocalStorage(key, dateInit) {
-	const [data, setData] = useState(dateInit);
-	
+export function useLocalStorage(key, dataInit) {
+	const [data, setData] = useState(dataInit);
+
 	useEffect(() => {
 		const res = JSON.parse(localStorage.getItem(key));
 		if (res) {
