@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 
-export function useLocalStorage(key, dataInit) {
+export function useLocalStorage(key, dataInit = null) {
 	const [data, setData] = useState(dataInit);
 
 	useEffect(() => {
