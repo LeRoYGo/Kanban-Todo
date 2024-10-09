@@ -9,7 +9,6 @@ function TasksList(props) {
   const [openModal, setOpenModal] = useState(false);
   const [currentCardTask, setCurrentCardTask] = useState(null);
   const [currentTaskList, setCurrentTaskList] = useState(null);
-
   const [boards, setBoards] = props.boards;
   const { id, title, tasks } = props.board;
   const isEmpty = !tasks.length;
@@ -62,10 +61,9 @@ function TasksList(props) {
     );
   }
   function dropCardHandler(taskList) {
-    
-    taskList.tasks.push(currentCardTask)
+    taskList.tasks.push(currentCardTask);
     console.log(currentCardTask);
-    
+
     const currentIndex = currentTaskList.tasks.indexOf(currentCardTask);
     console.log(currentIndex);
     currentTaskList.tasks.splice(currentIndex, 1);
@@ -86,8 +84,8 @@ function TasksList(props) {
     <>
       <div
         className={style["task-list"]}
-        onDragOver={e => onDragOver(e)}
-					onDrop={() => dropCardHandler(props.board)}
+        onDragOver={(e) => onDragOver(e)}
+        onDrop={() => dropCardHandler(props.board)}
       >
         <h2 className={style["title"]}>{title}</h2>
 
